@@ -4,12 +4,10 @@ blueprint:
   domain: automation
   input:
     button:
-      name: button
+      name: ESPHome Device
       description: Choose ESPHome device
       selector:
         device:
-          entity:
-            - integration: esphome
     singleb1:
       name: single short press Button 1
       description: Action to run when SHORT press
