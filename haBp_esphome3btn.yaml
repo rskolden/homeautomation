@@ -1,0 +1,201 @@
+blueprint:
+  name: ESPHome 3 button controller
+  description: This blueprint is for ESPHome 3 button controller.
+  domain: automation
+  input:
+    button:
+      name: button
+      description: Choose ESPHome device
+      selector:
+        device:
+          entity:
+            - integration: esphome
+    singleb1:
+      name: single short press Button 1
+      description: Action to run when SHORT press
+      default: []
+      selector:
+        action: {}
+    doubleb1:
+      name: double short press Button 1
+      description: Action to run when DOUBLE SHORT press
+      default: []
+      selector:
+        action: {}
+    longb1:
+      name: long press Button 1
+      description: Action to run when LONG press
+      default: []
+      selector:
+        action: {}
+    holdb1:
+      name: hold press Button 1
+      description: Action to run when HOLDING press
+      default: []
+      selector:
+        action: {}
+        
+    singleb2:
+      name: single short press Button 2
+      description: Action to run when SHORT press
+      default: []
+      selector:
+        action: {}
+    doubleb2:
+      name: double short press Button 2
+      description: Action to run when DOUBLE SHORT press
+      default: []
+      selector:
+        action: {}
+    longb2:
+      name: long press Button 2
+      description: Action to run when LONG press
+      default: []
+      selector:
+        action: {}
+    holdb2:
+      name: hold press Button 2
+      description: Action to run when HOLDING press
+      default: []
+      selector:
+        action: {}
+        
+    singleb3:
+      name: single short press Button 3
+      description: Action to run when SHORT press
+      default: []
+      selector:
+        action: {}
+    doubleb3:
+      name: double short press Button 3
+      description: Action to run when DOUBLE SHORT press
+      default: []
+      selector:
+        action: {}
+    longb3:
+      name: long press Button 3
+      description: Action to run when LONG press
+      default: []
+      selector:
+        action: {}
+    holdb3:
+      name: hold press Button 3
+      description: Action to run when HOLDING press
+      default: []
+      selector:
+        action: {}
+        
+  source_url: https://community.home-assistant.io/t/shelly-i4-4-buttons-actions/514527
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b1_single_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b1_dbl_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b1_long_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b1_hold
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b2_single_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b2_dbl_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b2_long_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b2_hold
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b3_single_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b3_dbl_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b3_long_click
+- platform: device
+  device_id: !input  button
+  domain: esphome
+  type: button_pressed
+  id: b3_hold
+action:
+- choose:
+  - conditions:
+    - condition: trigger
+      id: b1_single_click
+    sequence: !input singleb1
+  - conditions:
+    - condition: trigger
+      id: b1_dbl_click
+    sequence: !input doubleb1
+  - conditions:
+    - condition: trigger
+      id: b1_long_click
+    sequence: !input longb1
+  - conditions:
+    - condition: trigger
+      id: b1_hold
+    sequence: !input holdb1
+  - conditions:
+    - condition: trigger
+      id: b2_single_click
+    sequence: !input singleb2
+  - conditions:
+    - condition: trigger
+      id: b2_dbl_click
+    sequence: !input doubleb2
+  - conditions:
+    - condition: trigger
+      id: b2_long_click
+    sequence: !input longb2
+  - conditions:
+    - condition: trigger
+      id: b2_hold
+    sequence: !input holdb2
+  - conditions:
+    - condition: trigger
+      id: b3_single_click
+    sequence: !input singleb3
+  - conditions:
+    - condition: trigger
+      id: b3_dbl_click
+    sequence: !input doubleb3
+  - conditions:
+    - condition: trigger
+      id: b3_long_click
+    sequence: !input longb3
+  - conditions:
+    - condition: trigger
+      id: b3_hold
+    sequence: !input holdb3
