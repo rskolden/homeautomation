@@ -85,7 +85,7 @@ blueprint:
       selector:
         action: {}
         
-  source_url: https://community.home-assistant.io/t/shelly-i4-4-buttons-actions/514527
+  source_url: https://raw.githubusercontent.com/rskolden/homeautomation/main/haBp_esphome3btn.yaml
 mode: restart
 max_exceeded: silent
 trigger:
